@@ -39,7 +39,7 @@ class GameEngine(object):
         g.p2score_rect = g.p2score_surf.get_rect()
 
         # Load sounds
-        g.paddle_sound = self.load_sound("assets\\music\\ping.wav")
+        g.paddle_sound = self.load_sound(os.path.join(os.curdir, 'assets', 'music', 'ping.wav'))
 
         # Create game objects we need in globals.py for import other places
         g.paddle_sprite_list = pygame.sprite.Group()
@@ -49,7 +49,7 @@ class GameEngine(object):
         g.paddle_sprite_list.add(g.player2)
         g.ball = Ball(g.WHITE, g.BALL_SIZE)
 
-        print "GameEngine.__init__(): Complete."
+        print("GameEngine.__init__(): Complete.")
 
     def load_sound(self, sound_file):
         """Return a pygame.mixer.Sound object or raise error."""
@@ -58,7 +58,7 @@ class GameEngine(object):
             sound = pygame.mixer.Sound(sound_file)
             return sound
         except pygame.error:
-            print "Warning, unable to load, {}".format(sound_file)
+            print("Warning, unable to load, {}".format(sound_file))
 
     def draw_score(self):
         """Draw current score to the screen"""

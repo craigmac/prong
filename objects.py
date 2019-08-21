@@ -137,7 +137,8 @@ class Ball(pygame.sprite.Sprite):
                     self.update_score(1)
                 # Check paddle collisions
                 elif self.rect.colliderect(g.player1.rect):
-                    g.paddle_sound.play()
+                    if g.paddle_sound:
+                        g.paddle_sound.play()
                     self.hit = True
                     self.rect.left = g.player1.rect.right
                     self.vector[0] = -(self.vector[0] - 1)
@@ -146,7 +147,8 @@ class Ball(pygame.sprite.Sprite):
                     else:
                         self.vector[1] += 1
                 elif self.rect.colliderect(g.player2.rect):
-                    g.paddle_sound.play()
+                    if g.paddle_sound:
+                        g.paddle_sound.play()
                     self.hit = True
                     self.rect.right = g.player2.rect.left
                     self.vector[0] = -(self.vector[0] + 1)
@@ -174,26 +176,30 @@ class Ball(pygame.sprite.Sprite):
                 # Check paddle collisions
                 elif ychange > 0:  # Moving down
                     if self.rect.colliderect(g.player1.rect):
-                        g.paddle_sound.play()
+                        if g.paddle_sound:
+                            g.paddle_sound.play()
                         self.hit = True
                         self.rect.bottom = g.player1.rect.top
                         self.vector[1] = -(self.vector[1] - 1)
                         self.vector[0] -= 1
                     elif self.rect.colliderect(g.player2.rect):
-                        g.paddle_sound.play()
+                        if g.paddle_sound:
+                            g.paddle_sound.play()
                         self.hit = True
                         self.rect.bottom = g.player2.rect.top
                         self.vector[1] = -(self.vector[1] - 1)
                         self.vector[0] += 1
                 elif ychange < 0:  # Moving up
                     if self.rect.colliderect(g.player1.rect):
-                        g.paddle_sound.play()
+                        if g.paddle_sound:
+                            g.paddle_sound.play()
                         self.hit = True
                         self.rect.top = g.player1.rect.bottom
                         self.vector[1] = -(self.vector[1] - 1)
                         self.vector[0] -= 1
                     elif self.rect.colliderect(g.player2.rect):
-                        g.paddle_sound.play()
+                        if g.paddle_sound:
+                            g.paddle_sound.play()
                         self.hit = True
                         self.rect.top = g.player2.rect.bottom
                         self.vector[1] -= 1
@@ -230,19 +236,19 @@ class Ball(pygame.sprite.Sprite):
         # Update score
         if player_to_update == 0:
             g.game_score[0] += 1
-            print "Player 1 scored. Current Score : {}-{}".format(
-                g.game_score[0], g.game_score[1])
+            print("Player 1 scored. Current Score : {}-{}".format(
+                g.game_score[0], g.game_score[1]))
         elif player_to_update == 1:
             g.game_score[1] += 1
-            print "Player 2 scored. Current Score : {}-{}".format(
-                g.game_score[0], g.game_score[1])
+            print("Player 2 scored. Current Score : {}-{}".format(
+                g.game_score[0], g.game_score[1]))
 
         # Check if game won
         if g.game_score[0] >= g.win_score:
-            print "Player 1 won the game."
+            print("Player 1 won the game.")
             g.done = True
         elif g.game_score[1] >= g.win_score:
-            print "Player 2 won the game."
+            print("Player 2 won the game.")
             g.done = True
         else:
             self.reset()
