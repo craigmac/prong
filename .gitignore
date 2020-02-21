@@ -2,3 +2,5 @@ prong/
 __pycache__/
 *.pyc
 *.pyo
+.prong/
+*.sublime-workspace
