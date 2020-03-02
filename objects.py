@@ -1,8 +1,11 @@
-import pygame
+"""objects.py -- Game Sprites here."""
+
 import random
-import gamestate as g
-import sys
 import time
+
+import pygame
+
+import prong.gamestate as g
 
 
 class Paddle(pygame.sprite.Sprite):

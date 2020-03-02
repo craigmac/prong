@@ -1,8 +1,11 @@
-import pygame
-import sys
+"""engine.py Engine of the game resides here."""
+
 import os
-import gamestate as g
-from objects import *
+
+import pygame
+
+import prong.gamestate as g
+from .objects import Ball, Paddle
 
 
 class GameEngine(object):
@@ -39,7 +42,8 @@ class GameEngine(object):
         g.p2score_rect = g.p2score_surf.get_rect()
 
         # Load sounds
-        g.paddle_sound = self.load_sound(os.path.join(os.curdir, 'assets', 'music', 'ping.wav'))
+        g.paddle_sound = self.load_sound(os.path.join(os.curdir, 'assets',
+                                                      'music', 'ping.wav'))
 
         # Create game objects we need in globals.py for import other places
         g.paddle_sprite_list = pygame.sprite.Group()
@@ -116,7 +120,7 @@ class GameEngine(object):
                         g.player1.change = [0, 0]
             # Logic updates
             # new movement
-            #g.ball.update(dt)
+            # g.ball.update(dt)
             g.ball.update()
             g.screen.blit(g.ball.image, g.ball.rect)
             # new movement
