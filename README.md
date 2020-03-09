@@ -1,6 +1,8 @@
 # Prong!
 A simple clone of Pong, using Pygame library for Python 3.
 
+![](prong-demo.gif)
+
 # To Run
 With python3.x in your $PATH/%PATH% (unix/windows) first create a
 virtual environment to install the required packages.
