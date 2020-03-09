@@ -1,3 +1,4 @@
+# pylint: disable=too-many-function-args
 """engine.py Engine of the game resides here."""
 
 import os
@@ -8,7 +9,7 @@ import gamestate as g
 from objects import Ball, Paddle
 
 
-class GameEngine(object):
+class GameEngine():
     """ Base class to inherit from for a Game class. """
 
     def __init__(self):
@@ -33,7 +34,7 @@ class GameEngine(object):
 
         # Load font and draw initial score (0 - 0)
         g.font = pygame.font.SysFont("terminal", 144)
-        self.draw_score()
+        GameEngine.draw_score()
 
         g.p1score_surf = g.font.render(str(g.game_score[0]), False, g.WHITE)
         g.p1score_rect = g.p1score_surf.get_rect()
@@ -42,8 +43,8 @@ class GameEngine(object):
         g.p2score_rect = g.p2score_surf.get_rect()
 
         # Load sounds
-        g.paddle_sound = self.load_sound(os.path.join(os.curdir, 'assets',
-                                                      'music', 'ping.wav'))
+        g.paddle_sound = GameEngine.load_sound(os.path.join(os.curdir, 'assets',
+                                                            'music', 'ping.wav'))
 
         # Create game objects we need in globals.py for import other places
         g.paddle_sprite_list = pygame.sprite.Group()
@@ -55,7 +56,8 @@ class GameEngine(object):
 
         print("GameEngine.__init__(): Complete.")
 
-    def load_sound(self, sound_file):
+    @staticmethod
+    def load_sound(sound_file):
         """Return a pygame.mixer.Sound object or raise error."""
 
         try:
@@ -64,7 +66,8 @@ class GameEngine(object):
         except pygame.error:
             print("Warning, unable to load, {}".format(sound_file))
 
-    def draw_score(self):
+    @staticmethod
+    def draw_score():
         """Draw current score to the screen"""
 
         # We need to grab current int from game_score each time, because
@@ -79,12 +82,8 @@ class GameEngine(object):
         g.screen.blit(g.p1score_surf, (g.p1scrx, g.p1scry))
         g.screen.blit(g.p2score_surf, (g.p2scrx, g.p2scry))
 
-    def load_image(self, src):
-        """Load an image from disk, convert it and return image its Rect."""
-
-        pass
-
-    def run(self):
+    @staticmethod
+    def run():
         """Main game loop. Call to run instance of game."""
 
         while not g.done:
@@ -129,7 +128,7 @@ class GameEngine(object):
 
             # Drawing
             g.paddle_sprite_list.draw(g.screen)
-            self.draw_score()
+            GameEngine.draw_score()
             pygame.display.update()
 
         # Loop broken, done = True

@@ -1,3 +1,4 @@
+# pylint: disable=too-many-function-args
 """objects.py -- Game Sprites here."""
 
 import random
