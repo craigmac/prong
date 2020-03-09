@@ -4,3 +4,4 @@ __pycache__/
 *.pyo
 *.sublime-workspace
 *.code-*
+.pylint.d/

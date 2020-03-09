@@ -5,7 +5,7 @@ import time
 
 import pygame
 
-import prong.gamestate as g
+import gamestate as g
 
 
 class Paddle(pygame.sprite.Sprite):

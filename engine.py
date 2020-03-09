@@ -4,8 +4,8 @@ import os
 
 import pygame
 
-import prong.gamestate as g
-from .objects import Ball, Paddle
+import gamestate as g
+from objects import Ball, Paddle
 
 
 class GameEngine(object):
@@ -16,7 +16,7 @@ class GameEngine(object):
 
         # Pygame setup and initial states
         pygame.mixer.pre_init()  # Some platforms require this first to work
-        pygame.init()
+        pygame.init()  #nopylint
         pygame.mixer.init()
         g.screen = pygame.display.set_mode(g.SIZE)
         g.screen_rect = g.screen.get_rect()
