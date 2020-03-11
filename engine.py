@@ -1,4 +1,3 @@
-# pylint: disable=too-many-function-args
 """engine.py Engine of the game resides here."""
 
 import os

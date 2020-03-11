@@ -3,7 +3,6 @@
     "python.linting.enabled": true,
     "python.linting.pylintPath": "pylint",
     "python.linting.pylintArgs": [
-        "--disable=no-member, fixme"
     ],
     "python.pythonPath": "C:\\Users\\cmaceachern\\envs\\pygame\\Scripts\\python.exe"
 }
